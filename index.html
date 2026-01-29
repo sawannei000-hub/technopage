@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Unit Converter</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f4; text-align: center; padding-top: 50px; }
+        .calc-box { background: white; padding: 30px; display: inline-block; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        input { padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        #game-container { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 9999; }
+        .close-btn { position: absolute; top: 10px; right: 10px; color: white; cursor: pointer; font-weight: bold; background: rgba(255,255,255,0.2); padding: 5px 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="calc-box">
+        <h1>Metric Converter</h1>
+        <p>Convert Meters to Feet</p>
+        <input type="number" id="meters" placeholder="Meters...">
+        <button onclick="document.getElementById('res').innerText = (document.getElementById('meters').value * 3.28).toFixed(2) + ' Feet'">Convert</button>
+        <p id="res"></p>
+        
+        <!-- THE SECRET TRIGGER -->
+        <div onclick="launchGame()" style="margin-top:100px; opacity:0.05; font-size:10px; cursor:default;">System Version 1.0.9</div>
+    </div>
+
+    <!-- THE HIDDEN GAME LAYER -->
+    <div id="game-container">
+        <span class="close-btn" onclick="document.getElementById('game-container').style.display='none'">CLOSE [X]</span>
+        <iframe src="https://rumblerush.io" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; keyboard" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        function launchGame() {
+            // This opens the hidden game layer
+            document.getElementById('game-container').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
