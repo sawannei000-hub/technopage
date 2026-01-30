@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Drive - My Files</title>
+    <link rel="icon" href="https://ssl.gstatic.com">
+    <style>
+        body { background: #111; color: white; font-family: sans-serif; text-align: center; padding-top: 100px; }
+        input { width: 50%; padding: 15px; border-radius: 25px; border: none; font-size: 16px; }
+        button { padding: 15px 30px; border-radius: 25px; background: #de5833; color: white; border: none; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Resource Proxy</h1>
+    <input id="url" type="text" placeholder="Search DuckDuckGo or enter URL...">
+    <button onclick="launch()">Launch</button>
+
+    <!-- Essential Ultraviolet Scripts -->
+    <script src="/uv/uv.bundle.js"></script>
+    <script src="/uv/uv.config.js"></script>
+    <script>
+        function launch() {
+            const input = document.getElementById('url').value;
+            let url = input;
+            if (!input.includes('.') || input.includes(' ')) {
+                url = 'https://duckduckgo.com' + encodeURIComponent(input);
+            } else if (!input.startsWith('http')) {
+                url = 'https://' + input;
+            }
+            // Encodes the URL so Linewize can't read it
+            window.location.href = "/uv/service/" + btoa(url).replace(/\//g, '_').replace(/\+/g, '-').replace(/=/g, '');
+        }
+    </script>
+</body>
+</html>
